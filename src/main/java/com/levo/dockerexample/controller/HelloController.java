@@ -12,7 +12,35 @@ public class HelloController {
 	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test() {
-		return "Subodh's up and running: " + new Date();
+		return "Subodh'spipeline {
+			agent any
+		
+			triggers {
+				githubPush()
+			}
+		
+			stages {
+				stage('Checkout') {
+					steps {
+						checkout scm
+					}
+				}
+		
+				stage('Build') {
+					steps {
+						sh 'mvn clean package'
+					}
+				}
+		
+				stage('Docker Build') {
+					steps {
+						sh 'docker build -t docker-spring-boot-java-web-service .'
+					}
+				}
+		
+				// Add more stages as needed (e.g., Test, Deploy)
+			}
+		} up and running: " + new Date();
 	}
 
 }
