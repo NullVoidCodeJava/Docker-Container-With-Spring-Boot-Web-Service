@@ -12,7 +12,7 @@ public class HelloController {
 	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test() {
-		return "Another change has been made on " + new Date();
+		return "Another change has been madeby subodh " + new Date();
 	}
 
 }
